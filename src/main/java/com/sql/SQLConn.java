@@ -47,8 +47,10 @@ public class SQLConn {
                     return rs.getString(1).equals(password);
                 }
                 return false;
-            } catch (Exception ex){
-                Logger.Log_ln("Something from while getting value from database, cause: [" + Color.Red + ex.getMessage() + Color.Reset + "]", Logger.Level.WARN, Logger.Type.SYSTEM);
+            } catch (Exception e){
+                e.printStackTrace();
+                Logger.Log_ln(e.getMessage(), Logger.Level.CRIT, Logger.Type.SYSTEM);
+                Logger.Log_ln("Something from while getting value from database, cause: [" + Color.Red + e.getMessage() + Color.Reset + "]", Logger.Level.WARN, Logger.Type.SYSTEM);
                 return false;
             }
         }else{

@@ -96,6 +96,8 @@ public class Main {
         try {
             console.start();
         }catch (Exception e){
+            e.printStackTrace();
+            Logger.Log_ln(e.getMessage(), Logger.Level.CRIT, Logger.Type.SYSTEM);
             Logger.createDumpCore(e);
         }
     }

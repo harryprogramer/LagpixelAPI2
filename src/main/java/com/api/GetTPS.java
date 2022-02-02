@@ -2,6 +2,7 @@ package com.api;
 
 import org.json.JSONArray;
 import org.json.JSONObject;
+import util.Logger;
 
 class GetTPS {
     static SocketCore getServer = SocketCore.getServer();
@@ -11,13 +12,17 @@ class GetTPS {
         try{
             responseJSON = new JSONObject(message);
         }catch (Exception e){
+            e.printStackTrace();
+            Logger.Log_ln(e.getMessage(), Logger.Level.CRIT, Logger.Type.SYSTEM);
             return ResponseJSON.ERRORResponseToClientPaper("3", "incorrect paper response", "6");
         }
         if(responseJSON.getString("status").equalsIgnoreCase("OK")){
             JSONArray tps;
             try{
                 tps = responseJSON.getJSONObject("body").getJSONArray("tps");
-            }catch (Exception ignored){
+            }catch (Exception e){
+                e.printStackTrace();
+                Logger.Log_ln(e.getMessage(), Logger.Level.CRIT, Logger.Type.SYSTEM);
                 return ResponseJSON.ERRORResponseToClientPaper("3", "incorrect paper response", "6");
             }
             return ResponseJSON.OKResponseToClient(new JSONObject().put("value", tps));
@@ -27,7 +32,9 @@ class GetTPS {
             try{
                 errcode = responseJSON.getString("errorCode");
                 errorreason = responseJSON.getString("reason");
-            }catch (Exception ignored){
+            }catch (Exception e){
+                e.printStackTrace();
+                Logger.Log_ln(e.getMessage(), Logger.Level.CRIT, Logger.Type.SYSTEM);
                 return ResponseJSON.ERRORResponseToClientAPI("4", "paper and response structure error", null);
             }
             return ResponseJSON.ERRORResponseToClientPaper(errcode, errorreason, "6");

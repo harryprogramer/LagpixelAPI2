@@ -81,7 +81,9 @@ class SocketCore {
                     } catch (Exception ignored) {
                         return null;
                     }
-            } catch (IOException ignored) {
+            } catch (IOException e) {
+                e.printStackTrace();
+                Logger.Log_ln(e.getMessage(), Logger.Level.CRIT, Logger.Type.SYSTEM);
                 return null;
             }
         }else {

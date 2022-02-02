@@ -10,6 +10,7 @@ import com.sql.API;
 import com.sql.SQL;
 import org.json.JSONArray;
 import org.json.JSONObject;
+import util.Logger;
 
 public class Parser {
     static LagpixelAPI lagpixelAPI = LagpixelAPI08.getInstance();
@@ -21,6 +22,8 @@ public class Parser {
             login = jsonObject.getJSONObject("auth").getString("login");
             password = jsonObject.getJSONObject("auth").getString("password");
         }catch (Exception e){
+            e.printStackTrace();
+            Logger.Log_ln(e.getMessage(), Logger.Level.CRIT, Logger.Type.SYSTEM);
             return ResponseJSON.ERRORResponseToClientAPI("9", "invalid auth keys", "auth");
         }
 
@@ -35,6 +38,8 @@ public class Parser {
             id = Integer.parseInt(jsonObject.getString("id"));
             bodyJSON = jsonObject.getJSONObject("body");
         }catch (Exception e){
+            e.printStackTrace();
+            Logger.Log_ln(e.getMessage(), Logger.Level.CRIT, Logger.Type.SYSTEM);
             return ResponseJSON.ERRORResponseToClientAPI("8", "invalid id packet [" + e.getMessage() + "]", "parser");
         }
 
@@ -49,6 +54,8 @@ public class Parser {
                     reason = bodyJSON.getString("reason");
                     expires = bodyJSON.getString("expires");
                 } catch (Exception e) {
+                    e.printStackTrace();
+                    Logger.Log_ln(e.getMessage(), Logger.Level.CRIT, Logger.Type.SYSTEM);
                     return ResponseJSON.ERRORResponseToClientAPI("9", "incorrect player, reason or body key [" + e.getMessage() + "]", "parser");
                 }
                 return lagpixelAPI.banPlayer(player, reason, expires);
@@ -60,6 +67,8 @@ public class Parser {
                     message = bodyJSON.getString("message");
                     fromUser = bodyJSON.getString("user");
                 }catch (Exception e){
+                    e.printStackTrace();
+                    Logger.Log_ln(e.getMessage(), Logger.Level.CRIT, Logger.Type.SYSTEM);
                     return ResponseJSON.ERRORResponseToClientAPI("9", "invalid player or message body key [" + e + "]", "parser");
                 }
                 return lagpixelAPI.kickPlayer(player, message, fromUser);
@@ -82,6 +91,8 @@ public class Parser {
                 try{
                     player = bodyJSON.getString("player");
                 }catch (Exception e){
+                    e.printStackTrace();
+                    Logger.Log_ln(e.getMessage(), Logger.Level.CRIT, Logger.Type.SYSTEM);
                     return ResponseJSON.ERRORResponseToClientAPI("9", "invalid player key [" + e.getMessage() + "]", "parser");
                 }
                 return lagpixelAPI.removeFromWhitelist(player);
@@ -92,6 +103,8 @@ public class Parser {
                 try{
                     player = bodyJSON.getString("player");
                 }catch (Exception e){
+                    e.printStackTrace();
+                    Logger.Log_ln(e.getMessage(), Logger.Level.CRIT, Logger.Type.SYSTEM);
                     return ResponseJSON.ERRORResponseToClientAPI("9", "invalid player key [" + e.getMessage() + "]", "parser");
                 }
                 return lagpixelAPI.addToWhitelist(player);
@@ -103,6 +116,8 @@ public class Parser {
                     player = bodyJSON.getString("player");
                     message = bodyJSON.getString("message");
                 }catch (Exception e){
+                    e.printStackTrace();
+                    Logger.Log_ln(e.getMessage(), Logger.Level.CRIT, Logger.Type.SYSTEM);
                     return ResponseJSON.ERRORResponseToClientAPI("9", "invalid player or message key [" + e.getMessage() + "]", "parser");
                 }
                 return lagpixelAPI.BroadcastMessage(message, player);
@@ -121,6 +136,8 @@ public class Parser {
                 try{
                     player = bodyJSON.getString("player");
                 }catch (Exception e){
+                    e.printStackTrace();
+                    Logger.Log_ln(e.getMessage(), Logger.Level.CRIT, Logger.Type.SYSTEM);
                     return ResponseJSON.ERRORResponseToClientAPI("9", "invalid player key [" + e.getMessage() + "]", "parser");
                 }
                 return lagpixelAPI.checkIfPlayerWhitelist(player);

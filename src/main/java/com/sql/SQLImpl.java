@@ -51,6 +51,7 @@ class SQLImpl implements API {
             return sqlConn.checkPassword(login, password);
         } catch (Exception e) {
             e.printStackTrace();
+            Logger.Log_ln(e.getMessage(), Logger.Level.CRIT, Logger.Type.SYSTEM);
             return false;
         }
     }

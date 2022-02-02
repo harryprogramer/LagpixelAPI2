@@ -133,7 +133,9 @@ public class Tests {
                     Logger.Log_ln("Status whitelist: " + whitelistbool, Logger.Level.INFO, Logger.Type.SYSTEM);
                     booleantest[9] = true;
                     Logger.Log_ln("Whitelist bool test status, OK", Logger.Level.INFO, Logger.Type.SYSTEM);
-                } catch (Exception ignored) {
+                } catch (Exception e) {
+                    e.printStackTrace();
+                    Logger.Log_ln(e.getMessage(), Logger.Level.CRIT, Logger.Type.SYSTEM);
                     Logger.Log_ln("Status whitelist, bool not found", Logger.Level.WARN, Logger.Type.SYSTEM);
                     booleantest[10] = false;
                 }

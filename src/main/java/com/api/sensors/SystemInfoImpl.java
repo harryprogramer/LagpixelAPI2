@@ -47,8 +47,9 @@ class SystemInfoImpl implements SystemInfo {
                 timeToRespond = (stop.getTime() - start.getTime());
             }
 
-        } catch (IOException ex) {
-            System.out.println(ex.getMessage());
+        } catch (IOException e) {
+            e.printStackTrace();
+            Logger.Log_ln(e.getMessage(), Logger.Level.CRIT, Logger.Type.SYSTEM);
         }
         return (double) timeToRespond;
     }

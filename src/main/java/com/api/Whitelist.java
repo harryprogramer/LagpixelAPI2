@@ -2,6 +2,7 @@ package com.api;
 
 import org.json.JSONArray;
 import org.json.JSONObject;
+import util.Logger;
 
 class Whitelist {
     static SocketCore getServer = SocketCore.getServer();
@@ -11,6 +12,8 @@ class Whitelist {
         try{
             responseJSON = new JSONObject(message);
         }catch (Exception e){
+            e.printStackTrace();
+            Logger.Log_ln(e.getMessage(), Logger.Level.CRIT, Logger.Type.SYSTEM);
             return ResponseJSON.ERRORResponseToClientPaper("3", "incorrect paper response", "6");
         }
         if(responseJSON.getString("status").equalsIgnoreCase("OK")){
@@ -21,7 +24,9 @@ class Whitelist {
             try{
                 errcode = responseJSON.getString("errorCode");
                 errorreason = responseJSON.getString("reason");
-            }catch (Exception ignored){
+            }catch (Exception e){
+                e.printStackTrace();
+                Logger.Log_ln(e.getMessage(), Logger.Level.CRIT, Logger.Type.SYSTEM);
                 return ResponseJSON.ERRORResponseToClientPaper("4", "paper and response structure error", null);
             }
             return ResponseJSON.ERRORResponseToClientPaper(errcode, errorreason, "6");
@@ -44,7 +49,9 @@ class Whitelist {
             try{
                 errcode = responseJSON.getString("errorCode");
                 errorreason = responseJSON.getString("reason");
-            }catch (Exception ignored){
+            }catch (Exception e){
+                e.printStackTrace();
+                Logger.Log_ln(e.getMessage(), Logger.Level.CRIT, Logger.Type.SYSTEM);
                 return ResponseJSON.ERRORResponseToClientPaper("4", "paper and response structure error", null);
             }
             return ResponseJSON.ERRORResponseToClientPaper(errcode, errorreason, "6");
@@ -58,6 +65,8 @@ class Whitelist {
         try{
             responseJSON = new JSONObject(message);
         }catch (Exception e){
+            e.printStackTrace();
+            Logger.Log_ln(e.getMessage(), Logger.Level.CRIT, Logger.Type.SYSTEM);
             return ResponseJSON.ERRORResponseToClientPaper("3", "incorrect paper response", "6");
         }
         if(responseJSON.getString("status").equalsIgnoreCase("OK")){
@@ -68,7 +77,9 @@ class Whitelist {
             try{
                 errcode = responseJSON.getString("errorCode");
                 errorreason = responseJSON.getString("reason");
-            }catch (Exception ignored){
+            }catch (Exception e){
+                e.printStackTrace();
+                Logger.Log_ln(e.getMessage(), Logger.Level.CRIT, Logger.Type.SYSTEM);
                 return ResponseJSON.ERRORResponseToClientPaper("4", "paper and response structure error", null);
             }
             return ResponseJSON.ERRORResponseToClientPaper(errcode, errorreason, "6");
@@ -81,6 +92,8 @@ class Whitelist {
         try{
             responseJSON = new JSONObject(message);
         }catch (Exception e){
+            e.printStackTrace();
+            Logger.Log_ln(e.getMessage(), Logger.Level.CRIT, Logger.Type.SYSTEM);
             return ResponseJSON.ERRORResponseToClientPaper("3", "incorrect paper response", "6");
         }
         if(responseJSON.getString("status").equalsIgnoreCase("OK")){
@@ -91,7 +104,9 @@ class Whitelist {
             try{
                 errcode = responseJSON.getString("errorCode");
                 errorreason = responseJSON.getString("reason");
-            }catch (Exception ignored){
+            }catch (Exception e){
+                e.printStackTrace();
+                Logger.Log_ln(e.getMessage(), Logger.Level.CRIT, Logger.Type.SYSTEM);
                 return ResponseJSON.ERRORResponseToClientPaper("4", "paper and response structure error", null);
             }
             return ResponseJSON.ERRORResponseToClientPaper(errcode, errorreason, "6");
@@ -105,13 +120,17 @@ class Whitelist {
         try{
             responseJSON = new JSONObject(message);
         }catch (Exception e){
+            e.printStackTrace();
+            Logger.Log_ln(e.getMessage(), Logger.Level.CRIT, Logger.Type.SYSTEM);
             return ResponseJSON.ERRORResponseToClientPaper("3", "incorrect paper response", "6");
         }
         if(responseJSON.getString("status").equalsIgnoreCase("OK")){
             boolean whitelistStatus;
             try{
                 whitelistStatus = responseJSON.getJSONObject("body").getBoolean("bool");
-            }catch (Exception ignored){
+            }catch (Exception e){
+                e.printStackTrace();
+                Logger.Log_ln(e.getMessage(), Logger.Level.CRIT, Logger.Type.SYSTEM);
                 return ResponseJSON.ERRORResponseToClientPaper("3", "incorrect paper response", "15");
             }
             return ResponseJSON.OKResponseToClient(new JSONObject().put("bool", whitelistStatus));
@@ -121,7 +140,9 @@ class Whitelist {
             try{
                 errcode = responseJSON.getString("errorCode");
                 errorreason = responseJSON.getString("reason");
-            }catch (Exception ignored){
+            }catch (Exception e){
+                e.printStackTrace();
+                Logger.Log_ln(e.getMessage(), Logger.Level.CRIT, Logger.Type.SYSTEM);
                 return ResponseJSON.ERRORResponseToClientPaper("4", "paper and response structure error", null);
             }
             return ResponseJSON.ERRORResponseToClientPaper(errcode, errorreason, "6");
@@ -134,13 +155,17 @@ class Whitelist {
         try{
             responseJSON = new JSONObject(message);
         }catch (Exception e){
+            e.printStackTrace();
+            Logger.Log_ln(e.getMessage(), Logger.Level.CRIT, Logger.Type.SYSTEM);
             return ResponseJSON.ERRORResponseToClientPaper("3", "incorrect paper response", "6");
         }
         if(responseJSON.getString("status").equalsIgnoreCase("OK")){
             JSONArray list;
             try{
                 list = responseJSON.getJSONObject("body").getJSONArray("list");
-            }catch (Exception ignored){
+            }catch (Exception e){
+                e.printStackTrace();
+                Logger.Log_ln(e.getMessage(), Logger.Level.CRIT, Logger.Type.SYSTEM);
                 return ResponseJSON.ERRORResponseToClientPaper("3", "incorrect paper response", "16");
             }
             return ResponseJSON.OKResponseToClient(new JSONObject().put("list", list));
@@ -150,7 +175,9 @@ class Whitelist {
             try{
                 errcode = responseJSON.getString("errorCode");
                 errorreason = responseJSON.getString("reason");
-            }catch (Exception ignored){
+            }catch (Exception e){
+                e.printStackTrace();
+                Logger.Log_ln(e.getMessage(), Logger.Level.CRIT, Logger.Type.SYSTEM);
                 return ResponseJSON.ERRORResponseToClientPaper("4", "paper and response structure error", null);
             }
             return ResponseJSON.ERRORResponseToClientPaper(errcode, errorreason, "6");
@@ -163,13 +190,17 @@ class Whitelist {
         try{
             responseJSON = new JSONObject(message);
         }catch (Exception e){
+            e.printStackTrace();
+            Logger.Log_ln(e.getMessage(), Logger.Level.CRIT, Logger.Type.SYSTEM);
             return ResponseJSON.ERRORResponseToClientPaper("3", "incorrect paper response", "6");
         }
         if(responseJSON.getString("status").equalsIgnoreCase("OK")){
             boolean playerBool;
             try{
                 playerBool = responseJSON.getBoolean("bool");
-            }catch (Exception ignored){
+            }catch (Exception e){
+                e.printStackTrace();
+                Logger.Log_ln(e.getMessage(), Logger.Level.CRIT, Logger.Type.SYSTEM);
                 return ResponseJSON.ERRORResponseToClientPaper("3", "incorrect paper response", "16");
             }
             return ResponseJSON.OKResponseToClient(new JSONObject().put("bool", playerBool));
@@ -179,7 +210,9 @@ class Whitelist {
             try{
                 errcode = responseJSON.getString("errorCode");
                 errorreason = responseJSON.getString("reason");
-            }catch (Exception ignored){
+            }catch (Exception e){
+                e.printStackTrace();
+                Logger.Log_ln(e.getMessage(), Logger.Level.CRIT, Logger.Type.SYSTEM);
                 return ResponseJSON.ERRORResponseToClientPaper("4", "paper and response structure error", null);
             }
             return ResponseJSON.ERRORResponseToClientPaper(errcode, errorreason, "6");
